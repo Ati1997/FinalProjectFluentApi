@@ -17,25 +17,27 @@ namespace CleanFluentEF.Models
         #region [- OnModelCreating -]
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // رجیستر همه کلاس‌های IEntityTypeConfiguration<T>
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            modelBuilder.RegisterAllEntities<IDbSetEntity>(typeof(IDbSetEntity).Assembly);
+
 
             base.OnModelCreating(modelBuilder);
         }
         #endregion
 
-        #region [- DbSets -]
-        public DbSet<Product> Products => Set<Product>();
-        public DbSet<Category> Categories => Set<Category>();
+        //#region [- DbSets -]
+        //public DbSet<Product> Products => Set<Product>();
+        //public DbSet<Category> Categories => Set<Category>();
 
-        public DbSet<User> Users => Set<User>();
-        public DbSet<Role> Roles => Set<Role>();
-        public DbSet<Person> Persons => Set<Person>();
-        public DbSet<Employee> Employees => Set<Employee>();
+        //public DbSet<User> Users => Set<User>();
+        //public DbSet<Role> Roles => Set<Role>();
+        //public DbSet<Person> Persons => Set<Person>();
+        //public DbSet<Employee> Employees => Set<Employee>();
 
-        public DbSet<OrderHeader> OrderHeaders => Set<OrderHeader>();
-        public DbSet<OrderDetail> OrderDetails => Set<OrderDetail>();
+        //public DbSet<OrderHeader> OrderHeaders => Set<OrderHeader>();
+        //public DbSet<OrderDetail> OrderDetails => Set<OrderDetail>();
 
-        #endregion
+        //#endregion
     }
 }
